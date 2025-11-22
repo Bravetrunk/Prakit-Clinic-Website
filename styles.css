@@ -1,0 +1,282 @@
+/* Design System & Variables */
+:root {
+    /* Colors - Emerald Theme */
+    --color-primary: #10b981;
+    --color-primary-dark: #047857;
+    --color-primary-light: #d1fae5;
+    --color-secondary: #3b82f6;
+    --color-accent: #f59e0b;
+
+    --color-bg-body: #f8fafc;
+    --color-bg-surface: #ffffff;
+    --color-text-main: #1f2937;
+    --color-text-muted: #4b5563;
+    --color-text-light: #9ca3af;
+
+    /* Typography */
+    --font-family-main: 'Sukhumvit Set', 'Kanit', 'Inter', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+    color: var(--color-text-main);
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes swipeRight {
+    to {
+        transform: translateX(150%) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeLeft {
+    to {
+        transform: translateX(-150%) rotate(-20deg);
+        opacity: 0;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Staggered delays for children */
+.stagger-1 {
+    animation-delay: 0.1s;
+}
+
+.stagger-2 {
+    animation-delay: 0.2s;
+}
+
+.stagger-3 {
+    animation-delay: 0.3s;
+}
+
+/* Utility Classes / Components */
+
+.section-heading {
+    border-left: 4px solid var(--color-primary);
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* FAQ Styles */
+.faq-question {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    padding: 0 var(--spacing-lg);
+}
+
+.faq-answer.active {
+    max-height: 500px;
+    padding: 0.5rem var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+}
+
+/* Button Animations */
+.line-button {
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.line-button:active {
+    transform: scale(0.98);
+}
+
+.line-button:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Map Frame */
+.map-frame {
+    height: 300px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Premium Card Hover Effect */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Booking Tabs */
+.booking-tab {
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+
+.booking-tab.active {
+    background-color: #10b981;
+    color: white;
+}
+
+.booking-tab:hover:not(.active) {
+    background-color: #e5e7eb;
+}
+
+/* Swipe Cards Container */
+.swipe-container {
+    perspective: 1000px;
+}
+
+/* Swipe Card Styles */
+.swipe-card {
+    position: absolute;
+    width: 90%;
+    max-width: 400px;
+    height: 500px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: grab;
+}
+
+.swipe-card:active {
+    cursor: grabbing;
+}
+
+.swipe-card img {
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Card Stack Effect */
+.swipe-card[data-index="0"] {
+    z-index: 11;
+    transform: translateY(0) scale(1);
+}
+
+.swipe-card[data-index="1"] {
+    z-index: 10;
+    transform: translateY(10px) scale(0.95);
+    opacity: 0.8;
+}
+
+.swipe-card[data-index="2"] {
+    z-index: 9;
+    transform: translateY(20px) scale(0.9);
+    opacity: 0.6;
+}
+
+.swipe-card[data-index]:not([data-index="0"]):not([data-index="1"]):not([data-index="2"]) {
+    z-index: 1;
+    transform: translateY(30px) scale(0.85);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Swipe Animations */
+.swipe-card.swipe-right {
+    animation: swipeRight 0.5s ease-out forwards;
+}
+
+.swipe-card.swipe-left {
+    animation: swipeLeft 0.5s ease-out forwards;
+}
+
+/* Navigation Buttons */
+.swipe-btn {
+    background-color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.swipe-btn:hover {
+    background-color: #10b981;
+    color: white;
+    transform: scale(1.1);
+}
+
+.swipe-btn:active {
+    transform: scale(0.95);
+}
+
+/* Progress Dots */
+.swipe-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.swipe-dot.active {
+    background-color: #10b981;
+    width: 24px;
+    border-radius: 4px;
+}
+
+.swipe-dot:hover:not(.active) {
+    background-color: #9ca3af;
+}
